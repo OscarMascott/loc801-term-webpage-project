@@ -60,7 +60,7 @@ function submitAnswers() {
             feedbackElement.innerHTML = questions[question].correctFeedback;
             feedbackElement.style.color = "green";
         } else {
-            feedbackElement.innerHTML = questions[question].incorrectFeedback[selectedValue] || "Incorrect. Please try again.";
+            feedbackElement.innerHTML = questions[question].incorrectFeedback[selectedValue] || "Incorrecto. Por favor intenta de nuevo.";
             feedbackElement.style.color = "red";
         }
 
@@ -70,7 +70,7 @@ function submitAnswers() {
 
     // Handle unanswered questions
     if (unansweredQuestions.length > 0) {
-        const errorMsg = `Please answer ${unansweredQuestions.length === 1 ? 'question' : 'questions'} ${unansweredQuestions.join(', ')}`;
+        const errorMsg = `Por favor responde ${unansweredQuestions.length === 1 ? 'pregunta' : 'preguntas'} ${unansweredQuestions.join(', ')}`;
         const errorElement = document.getElementById('quiz-error') || createErrorElement();
         errorElement.textContent = errorMsg;
         errorElement.style.display = 'block';
@@ -82,13 +82,13 @@ function submitAnswers() {
     scoreAnnouncement.setAttribute('role', 'status');
     scoreAnnouncement.setAttribute('aria-live', 'polite');
     scoreAnnouncement.className = 'sr-only';
-    scoreAnnouncement.textContent = `You got ${totalCorrect} out of ${Object.keys(questions).length} questions correct`;
+    scoreAnnouncement.textContent = `Tuviste ${totalCorrect} de ${Object.keys(questions).length} preguntas correctas`;
     document.querySelector('.quiz-container').appendChild(scoreAnnouncement);
 
 } catch (error) {
     console.error('Quiz error:', error);
     const errorElement = document.getElementById('quiz-error') || createErrorElement();
-    errorElement.textContent = 'An error occurred while processing your answers. Please refresh the page and try again.';
+    errorElement.textContent = 'Ocurrió un error mientras se procesaban tus respuestas. Por favor actualiza la página e intenta de nuevo.';
     errorElement.style.display = 'block';
 }
 
